@@ -14,11 +14,15 @@ categorías, estilos, iluminación y composición de manera dinámica, proporcio
 una herramienta intuitiva para la creación de contenido creativo de alta calidad. 
 
 **Objetivos Específicos:**
+
 • Diseñar una interfaz gráfica intuitiva y amigable que facilite la selección de categorías, 
 elementos, estilos, iluminación y composición. 
+
 • Implementar la lógica de generación de prompts adaptativos, que combine las opciones 
 del usuario con descripciones detalladas y coherentes. 
+
 • Validar las selecciones del usuario para garantizar que todos los campos estén completos 
 antes de generar el prompt. 
+
 • Incorporar funcionalidades de copia al portapapeles y visualización dinámica del prompt 
 generado.
