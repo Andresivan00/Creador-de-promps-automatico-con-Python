@@ -33,13 +33,13 @@ compositions = [
 #Function to display the options of elements according to the chosen category.
 def update_elements(event=None):
     category = category_var.get()
-    nuevos_elementos = elementos_por_category.get(category, [])
-    elemento_var.set("")
-    elemento_menu["menu"].delete(0, "end")
-    for elemento in nuevos_elementos:
-        elemento_menu["menu"].add_command(
-            label=elemento,
-            command=lambda value=elemento: elemento_var.set(value)
+    nuevos_elements = elements_por_category.get(category, [])
+    element_var.set("")
+    element_menu["menu"].delete(0, "end")
+    for element in new_elements:
+        element_menu["menu"].add_command(
+            label=element,
+            command=lambda value=element: element_var.set(value)
         )
 
 #Función para mostrar un mensaje que señale al usuario que primero debe escoger una categoría si intenta
@@ -231,14 +231,15 @@ def crear_menu(etiqueta, variable, opciones, comando=None, advertencia=False):
         menu.bind("<Button-1>", mostrar_advertencia_elemento)
     return menu
 
-#Creación de cada menú desplegable con la función "crear_menu()" según cada opción.
-crear_menu("Categoría:", category_var, elementos_por_category.keys(), update_elements)
-elemento_menu = crear_menu("Elemento principal:", elemento_var, [], advertencia=True)
-crear_menu("Estilo visual:", estilo_var, estilos_visuales)
-crear_menu("Iluminación:", iluminacion_var, iluminaciones)
-crear_menu("Composición:", composicion_var, composiciones)
+# Creation of each dropdown menu using the "create_menu()" function according to each option.
 
-#Configuración de botones para "Generar Prompt" y "Copiar Prompt".
+create_menu("Category:", category_var, elements_by_category.keys(), update_elements)
+element_menu = create_menu("Main Element:", element_var, [], warning=True)
+create_menu("Visual Style:", style_var, visual_styles)
+create_menu("Lighting:", lighting_var, lightings)
+create_menu("Composition:", composition_var, compositions)
+
+# Configuration of buttons for "Generate Prompt" and "Copy Prompt".
 ttk.Button(frame_izq, text="Generar Prompt", command=generar_prompt).pack(fill="x", pady=(20, 5))
 ttk.Button(frame_izq, text="Copiar Prompt", command=copiar_prompt).pack(fill="x", pady=5)
 
