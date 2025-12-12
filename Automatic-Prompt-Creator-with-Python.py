@@ -42,74 +42,74 @@ def update_elements(event=None):
             command=lambda value=element: element_var.set(value)
         )
 
-#Función para mostrar un mensaje que señale al usuario que primero debe escoger una categoría si intenta
-#escoger un elemento principal sin seleccionar la categoría.
-def mostrar_advertencia_elemento(event):
+# Function to display a message informing the user that they must first choose a category if they try
+# to select a main element without selecting a category.
+def mostrar_advertencia_element(event):
     if not category_var.get():
-        messagebox.showwarning("Advertencia", "Primero debes escoger una categoría.")
-
-#Función para la construcción del prompt en base a las opciones escogidas.
-def generar_prompt():
+        messagebox.showwarning("Warning", "You must choose a category first.")
+        
+# Function to construct the prompt based on the selected options.
+def generate_prompt():
     category = category_var.get()
-    elemento = elemento_var.get()
-    estilo = estilo_var.get()
-    iluminacion = iluminacion_var.get()
-    composicion = composicion_var.get()
+    element = element_var.get()
+    style = style_var.get()
+    lighting = lighting_var.get()
+    composition = composition_var.get()
 
-    if not (category and elemento and estilo and iluminacion and composicion):
+    if not (category and element and style and iluminacion and composicion):
         resultado_label.config(
-            text="Completa todas las opciones antes de generar el prompt.",
+            text="Complete all options before generating the prompt.",
             fg="#ff5555"
         )
         return
 
     #Ajustes de redacción según las opciones seleccionadas.
     if category == "Anime":
-        entorno_texto = (
+        text_environment = (
             "representado en un estilo anime limpio, expresivo y visualmente equilibrado"
         )
     elif category == "Realista":
-        entorno_texto = (
+        text_environment = (
             "interpretado con estética realista, priorizando proporciones naturales y detalle auténtico"
         )
     elif category == "Abstracto":
-        entorno_texto = (
+        text_environment = (
             "concebido desde una perspectiva abstracta, con formas expresivas y simbolismo conceptual"
         )
     else:
-        entorno_texto = (
+        text_environment = (
             f"ambientado en un universo de {category.lower()}, con identidad visual definida y riqueza estética"
         )
 
-    iluminacion_l = iluminacion.lower()
+    lightning_l = lightning.lower()
 
-    if iluminacion_l == "atardecer":
-        luz_texto = (
+    if lightning_l == "atardecer":
+        light_text = (
             "iluminado por un cálido resplandor de atardecer que realza sombras suaves"
         )
-    elif iluminacion_l == "luz natural":
-        luz_texto = (
+    elif lightning_l == "luz natural":
+        light_text = (
             "bañado por luz natural equilibrada que aporta claridad y volumen"
         )
-    elif iluminacion_l == "neón":
-        luz_texto = (
+    elif lightning_l == "neón":
+        light_text = (
             "con iluminación neón vibrante que genera reflejos intensos y ambiente moderno"
         )
-    elif iluminacion_l == "nocturna":
-        luz_texto = (
+    elif lightning_l == "nocturna":
+        light_text = (
             "ambientado con iluminación nocturna que produce contrastes marcados y atmósfera profunda"
         )
-    elif iluminacion_l == "dramática":
-        luz_texto = (
+    elif lightning_l == "dramática":
+        light_text = (
             "con una iluminación dramática que enfatiza contraste y tensión visual"
         )
     else:
-        luz_texto = (
-            f"con iluminación {iluminacion_l} aplicada de forma armoniosa"
+        light_text = (
+            f"con iluminación {lightning_l} aplicada de forma armoniosa"
         )
         
-    estilo_texto = (
-        f"realizado en estilo {estilo.lower()}, con atención a color, forma y composición"
+    style_texto = (
+        f"realizado en estilo {style.lower()}, con atención a color, forma y composición"
     )
 
     composicion_texto = f"siguiendo una composición en {composicion.lower()}"
@@ -122,7 +122,7 @@ def generar_prompt():
 
     #Prompt final.
     prompt = (
-        f"{elemento} {entorno_texto}, {luz_texto}, {estilo_texto}, "
+        f"{element} {text_environment}, {light_text}, {style_text}, "
         f"{composicion_texto}. {detalles}"
     )
 
@@ -208,9 +208,9 @@ frame_der.pack_propagate(False)
 
 # Variables para guardar las opciones seleccionadas por el usuario.
 category_var = tk.StringVar()
-elemento_var = tk.StringVar()
-estilo_var = tk.StringVar()
-iluminacion_var = tk.StringVar()
+element_var = tk.StringVar()
+style_var = tk.StringVar()
+lightning_var = tk.StringVar()
 composicion_var = tk.StringVar()
 
 #Configuración básica del panel izquierdo "Opciones de Generación".
@@ -228,7 +228,7 @@ def crear_menu(etiqueta, variable, opciones, comando=None, advertencia=False):
     menu = ttk.OptionMenu(frame_izq, variable, "", *opciones, command=comando)
     menu.pack(fill="x", pady=5)
     if advertencia:
-        menu.bind("<Button-1>", mostrar_advertencia_elemento)
+        menu.bind("<Button-1>", mostrar_advertencia_element)
     return menu
 
 # Creation of each dropdown menu using the "create_menu()" function according to each option.
