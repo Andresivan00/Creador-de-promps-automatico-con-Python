@@ -222,17 +222,16 @@ tk.Label(
     bg="#0d0d0d"
 ).pack(pady=(0, 15))
 
-#Función para crear los menús desplegables para las opciones dentro del apartado de "Opciones de Generación".
-def crear_menu(etiqueta, variable, opciones, comando=None, advertencia=False):
-    ttk.Label(frame_izq, text=etiqueta).pack(anchor="w", pady=(5, 0))
-    menu = ttk.OptionMenu(frame_izq, variable, "", *opciones, command=comando)
+# Function to create dropdown menus for the options in the "Generation Options" section.
+def create_menu(label, variable, options, command=None, warning=False):
+    ttk.Label(left_frame, text=label).pack(anchor="w", pady=(5, 0))
+    menu = ttk.OptionMenu(left_frame, variable, "", *options, command=command)
     menu.pack(fill="x", pady=5)
-    if advertencia:
-        menu.bind("<Button-1>", mostrar_advertencia_element)
+    if warning:
+        menu.bind("<Button-1>", show_warning_element)
     return menu
 
 # Creation of each dropdown menu using the "create_menu()" function according to each option.
-
 create_menu("Category:", category_var, elements_by_category.keys(), update_elements)
 element_menu = create_menu("Main Element:", element_var, [], warning=True)
 create_menu("Visual Style:", style_var, visual_styles)
@@ -244,10 +243,10 @@ ttk.Button(frame_izq, text="Generar Prompt", command=generar_prompt).pack(fill="
 ttk.Button(frame_izq, text="Copiar Prompt", command=copiar_prompt).pack(fill="x", pady=5)
 
 
-#Configuración básica del panel derecho "Resultado del Prompt".
+# Basic configuration of the right panel "Prompt Result".
 tk.Label(
-    frame_der,
-    text="Resultado del Prompt",
+    right_frame,
+    text="Prompt Result",
     font=("Segoe UI", 15, "bold"),
     fg="#b19cd9",
     bg="#0d0d0d"
@@ -269,11 +268,11 @@ resultado_label = tk.Label(
 )
 resultado_label.pack(fill="both", expand=True)
 
-#Breve descripción de la app.   
-descripcion = tk.Label(
-    frame_der,
-    text="Esta aplicación te permite combinar categorías, estilos y composiciones "
-        "para generar prompts coherentes y creativos para modelos de IA visual.",
+# Brief description of the app.   
+description = tk.Label(
+    right_frame,
+    text="This application allows you to combine categories, styles, and compositions "
+         "to generate coherent and creative prompts for visual AI models.",
     bg="#0d0d0d",
     fg="#aaaaaa",
     wraplength=400,
@@ -282,6 +281,6 @@ descripcion = tk.Label(
 )
 descripcion.pack(pady=(5, 0))
 
-#Iniciamos el bucle principal de la interfaz gráfica, manteniendo la ventana abierta y 
-#gestionando los eventos del usuario hasta que se cierre mediante la función mainloop de Tkinter.
+# We start the main loop of the graphical interface, keeping the window open and
+# handling user events until it is closed using Tkinter's mainloop function.
 ventana.mainloop()
