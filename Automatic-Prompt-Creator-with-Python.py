@@ -63,7 +63,7 @@ def generate_prompt():
         )
         return
 
-    #Ajustes de redacción según las opciones seleccionadas.
+   #Writing adjustments according to the selected options.
     if category == "Anime":
         text_environment = (
             "represented in a clean, expressive, and visually balanced anime style"
@@ -114,46 +114,46 @@ def generate_prompt():
 
     text_composition = f"following a composition in {composition.lower()}"
 
-    #Capa profesional de detalles para mejorar la calidad del prompt.
-    detalles = (
-        "Incluye texturas definidas, profundidad atmosférica, manejo preciso de la luz, "
-        "armonía cromática y un acabado profesional pensado para resultados de alta calidad."
+    # Professional detail layer to improve prompt quality.
+    details = (
+        "Include defined textures, atmospheric depth, precise light handling, "
+        "chromatic harmony, and a professional finish designed for high-quality results."
     )
 
-    #Prompt final.
+    # Final prompt.
     prompt = (
-        f"{element} {text_environment}, {light_text}, {style_text}, "
-        f"{composicion_texto}. {detalles}"
+        f"{element} {environment_text}, {lighting_text}, {style_text}, "
+        f"{composition_text}. {details}"
     )
-
+    
     resultado_label.config(text=prompt, fg="white")
 
-#Función para la opción "Copiar Prompt".
-def copiar_prompt():
-    texto = resultado_label.cget("text")
-    if not texto:
-        messagebox.showinfo("Información", "Primero genera un prompt para copiarlo.")
+# Function for the "Copy Prompt" option.
+def copy_prompt():
+    text = result_label.cget("text")
+    if not text:
+        messagebox.showinfo("Information", "First generate a prompt to copy it.")
         return
-    ventana.clipboard_clear()
-    ventana.clipboard_append(texto)
-    messagebox.showinfo("Copiado", "Prompt copiado al portapapeles.")
+    window.clipboard_clear()
+    window.clipboard_append(text)
+    messagebox.showinfo("Copied", "Prompt copied to clipboard.")
 
-#Configuración básica de interfaz.
+# Basic interface configuration.
 
 ventana = tk.Tk()
-ventana.title("Generador de Prompts")
+ventana.title("Prompt Generator")
 ventana.geometry("1080x670")
 ventana.configure(bg="#0d0d0d")
 ventana.minsize(960, 580)
 
-#Centramos la ventana en función del tamaño de la pantalla.
+# We center the window based on the screen size.
 ancho_ventana = 1080
 alto_ventana = 670
 ancho_pantalla = ventana.winfo_screenwidth()
 alto_pantalla = ventana.winfo_screenheight()
-pos_x = int((ancho_pantalla / 2) - (ancho_ventana / 2))
-pos_y = int((alto_pantalla / 2) - (alto_ventana / 2))
-ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{pos_x}+{pos_y}")
+pos_x = int((screen_width / 2) - (window_width / 2))
+pos_y = int((screen_height / 2) - (window_height / 2))
+ventana.geometry(f"{window_width}x{window_height}+{pos_x}+{pos_y}")
 
 style = ttk.Style()
 style.theme_use("clam")
@@ -185,38 +185,38 @@ style.map("TButton", background=[("active", "#4c4cff")])
 
 titulo = tk.Label(
     ventana,
-    text="Generador de Prompts",
+    text="Prompt Generator",
     font=("Segoe UI", 22, "bold"),
     fg="#b19cd9",
     bg="#0d0d0d"
 )
 titulo.pack(pady=(15, 10))
 
-#Configuración del frame principal.
-main_frame = tk.Frame(ventana, bg="#0d0d0d")
+# Main frame configuration.
+main_frame = tk.Frame(window, bg="#0d0d0d")
 main_frame.pack(fill="both", expand=True)
 
-#Configuración del frame con el apartado "Opciones de Generación".
+# Configuration of the frame with the "Generation Options" section.
 frame_izq = tk.Frame(main_frame, bg="#0d0d0d", width=420)
 frame_izq.pack(side="left", fill="y", padx=25, pady=20)
 frame_izq.pack_propagate(False)
 
-#Configuración del frame con el apartado "Resultado del Prompt" (además de la breve descripción de la aplicación).
+# Configuration of the frame with the "Prompt Result" section (in addition to the brief application description).
 frame_der = tk.Frame(main_frame, bg="#0d0d0d", width=420)
 frame_der.pack(side="right", fill="both", expand=True, padx=25, pady=20)
 frame_der.pack_propagate(False)
 
-# Variables para guardar las opciones seleccionadas por el usuario.
+# Variables to store the options selected by the user.
 category_var = tk.StringVar()
 element_var = tk.StringVar()
 style_var = tk.StringVar()
 lightning_var = tk.StringVar()
 composicion_var = tk.StringVar()
 
-#Configuración básica del panel izquierdo "Opciones de Generación".
+# Basic configuration of the left panel "Generation Options".
 tk.Label(
     frame_izq,
-    text="Opciones de Generación",
+    text="Generation Options",
     font=("Segoe UI", 15, "bold"),
     fg="#b19cd9",
     bg="#0d0d0d"
