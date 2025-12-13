@@ -68,11 +68,11 @@ def generate_prompt():
         text_environment = (
             "represented in a clean, expressive, and visually balanced anime style"
         )
-    elif category == "Realista":
+    elif category == "Realistic":
         text_environment = (
             "interpreted with a realistic aesthetic, prioritizing natural proportions and authentic detail"
         )
-    elif category == "Abstracto":
+    elif category == "Abstract":
         text_environment = (
             "conceived from an abstract perspective, with expressive forms and conceptual symbolism"
         )
@@ -139,7 +139,6 @@ def copy_prompt():
     messagebox.showinfo("Copied", "Prompt copied to clipboard.")
 
 # Basic interface configuration.
-
 ventana = tk.Tk()
 ventana.title("Prompt Generator")
 ventana.geometry("1080x670")
