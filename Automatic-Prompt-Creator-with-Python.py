@@ -66,53 +66,53 @@ def generate_prompt():
     #Ajustes de redacción según las opciones seleccionadas.
     if category == "Anime":
         text_environment = (
-            "representado en un estilo anime limpio, expresivo y visualmente equilibrado"
+            "represented in a clean, expressive, and visually balanced anime style"
         )
     elif category == "Realista":
         text_environment = (
-            "interpretado con estética realista, priorizando proporciones naturales y detalle auténtico"
+            "interpreted with a realistic aesthetic, prioritizing natural proportions and authentic detail"
         )
     elif category == "Abstracto":
         text_environment = (
-            "concebido desde una perspectiva abstracta, con formas expresivas y simbolismo conceptual"
+            "conceived from an abstract perspective, with expressive forms and conceptual symbolism"
         )
     else:
         text_environment = (
-            f"ambientado en un universo de {category.lower()}, con identidad visual definida y riqueza estética"
+            f"set in a universe of {category.lower()}, with a defined visual identity and aesthetic richness"
         )
 
     lightning_l = lightning.lower()
 
-    if lightning_l == "atardecer":
+    if lightning_l == "sunset":
         light_text = (
-            "iluminado por un cálido resplandor de atardecer que realza sombras suaves"
+            "illuminated by a warm sunset glow that enhances soft shadows"
         )
-    elif lightning_l == "luz natural":
+    elif lightning_l == "natural light":
         light_text = (
-            "bañado por luz natural equilibrada que aporta claridad y volumen"
+            "bathed in balanced natural light that brings clarity and volume"
         )
-    elif lightning_l == "neón":
+    elif lightning_l == "neon":
         light_text = (
-            "con iluminación neón vibrante que genera reflejos intensos y ambiente moderno"
+            "with vibrant neon lighting that creates intense reflections and a modern atmosphere"
         )
-    elif lightning_l == "nocturna":
+    elif lightning_l == "night shift":
         light_text = (
-            "ambientado con iluminación nocturna que produce contrastes marcados y atmósfera profunda"
+            "set with nighttime lighting that produces marked contrasts and a deep atmosphere"
         )
-    elif lightning_l == "dramática":
+    elif lightning_l == "dramatic":
         light_text = (
-            "con una iluminación dramática que enfatiza contraste y tensión visual"
+            "with dramatic lighting that emphasizes contrast and visual tension"
         )
     else:
         light_text = (
-            f"con iluminación {lightning_l} aplicada de forma armoniosa"
+            f"with {lightning_l} lighting applied harmoniously"
         )
         
-    style_texto = (
-        f"realizado en estilo {style.lower()}, con atención a color, forma y composición"
+    style_text = (
+        f"done in style {style.lower()}, with attention to color, shape and composition"
     )
 
-    composicion_texto = f"siguiendo una composición en {composicion.lower()}"
+    text_composition = f"following a composition in {composition.lower()}"
 
     #Capa profesional de detalles para mejorar la calidad del prompt.
     detalles = (
