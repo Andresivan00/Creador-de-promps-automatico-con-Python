@@ -283,4 +283,5 @@ descripcion.pack(pady=(5, 0))
 
 #Iniciamos el bucle principal de la interfaz gráfica, manteniendo la ventana abierta y 
 #gestionando los eventos del usuario hasta que se cierre mediante la función mainloop de Tkinter.
+
 ventana.mainloop()
